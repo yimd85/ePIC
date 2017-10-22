@@ -17,7 +17,14 @@ if (process.env.DATABASE_URL) {
 
 //datebase for users
 var User = sequelize.define('user', {
-  email: Sequelize.STRING(100),
+  email: {
+            type: Sequelize.STRING(100),
+            isUnique: true,
+            allowNull: false,
+            validate:{
+                isEmail : true
+            }
+        },
   firstname: Sequelize.STRING(100),
   lastname: Sequelize.STRING(100),
   password: Sequelize.STRING(100)

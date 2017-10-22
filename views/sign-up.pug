@@ -11,21 +11,24 @@ body
 h1#logo ePIC
 
 
-form(action="", method="POST")
-br
-label(for="email") Email
-input#email(type="text", email="email")
-br
-label(for="username") First name
-input#username(type="text", name="first")
-br
-label(for="username") Last Name
-input#username(type="text", name="last")
-br
-label(for="password") Password
-input#password(type="password")
-br
-input(type="submit", value="Login")
+form(action='', method='post')
+  label(for='email') Email: 
+  input#email(type='text', name='email')
+  br
+  label(for='firstname') First Name: 
+  input#username(type='text', name='firstname')
+  br
+  label(for='lastname') Last Name: 
+  input#username(type='text', name='lastname')
+  br
+  label(for='password') Password: 
+  input#password(type='text', name='password')
+  br
+  button Login
+
+
+
+
 br
 a(href='/') Already a User
 br

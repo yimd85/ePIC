@@ -1,26 +1,37 @@
 //- home-page
-
-
  !DOCTYPE html>
 html(lang="en")
-head
-meta(charset="UTF-8")
-title Scope DOM Mini Project
-body
-h1#logo ePIC
-div
-form(action="", method="POST")
-img(src="./pic/profile.jpg")
-br
-label(for="comment") Comment
-input#comment(type="text", comment="comment")
-button(#like)
-input(type="submit", value="like")
-br
-label(for="password") Password
-input#password(type="password")
-br
-input(type="submit", value="Login")
-br
-a(href='signup') New User
-script(type="text/javascript", src="server.js")
+	head
+		meta(charset="UTF-8")
+		title ePIC
+	body
+		h1#logo ePIC
+		
+		div 
+			form(action="", method="POST")
+				img(src="./pic/profile.jpg")
+
+					br
+						label(for="comment") Comment
+							input#comment(type="submit", comment="text")
+						button(#like)
+							input(type="submit", value="like")
+		div 
+			navbar(class= "button")
+				button(#home-page)
+					a(href='home-page') 
+						div
+							#home.icons
+				button(#profile-page)
+		 			a(href='profile-page') 
+		 				div
+		 					#profile.icons
+				button(#add-pic)
+				    a(href='post-page') 
+				    	div
+				    		#add.icons
+
+
+
+
+		script(type="text/javascript", src="server.js")

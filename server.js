@@ -2,8 +2,10 @@
 var express = require('express')
 var path    = require("path");
 var bodyParser= require('body-parser')
-// var Stuff = require("./models/models.js");
 var app = express();
+
+//table creation variables
+var User = require("./models/user.js");
 
 const { Client } = require('pg');
 
@@ -33,10 +35,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //logon page
 app.get('/',function(request,response){
           response.render('login-page');
-
 });
 
 //signup
+app.post('/signup',function(request,response){
+  User
+    .findAll()
+      .then(function(){
+        User.create({
+            email: request.body.email,
+            firstname: request.body.firstname,
+            lastname: request.body.lastname,
+            password: request.body.password
+        })
+          response.redirect('/');
+        })
+});
+
+
 app.get('/signup',function(request,response){
           response.render('sign-up');
 });
