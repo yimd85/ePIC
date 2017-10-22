@@ -1,0 +1,24 @@
+{
+  "name": "epic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yimd85/ePIC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yimd85/ePIC/issues"
+  },
+  "homepage": "https://github.com/yimd85/ePIC#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "pg": "^7.3.0"
+  }
+}
