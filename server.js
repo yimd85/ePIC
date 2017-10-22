@@ -11,7 +11,7 @@ const { Client } = require('pg');
 //   connectionString: process.env.DATABASE_URL,
 //   ssl: true,
 // });
-// 
+//
 // client.connect();
 //
 // client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
@@ -32,40 +32,54 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //logon page
 app.get('/',function(request,response){
-          response.render('logonPage');
+          response.render('login-page');
 
 });
 
 //signup
 app.get('/signup',function(request,response){
-          response.render('signupPage');
+          response.render('sign-up');
 });
 
 
 
 //render homepage
 app.get('/home',function(request,response){
-          response.render('homePage')
+          response.render('home-page')
 })
 
 
 //render post
 app.get('/post',function(request,response){
-          response.render('postPage')
+          response.render('post-page')
 })
 
 
 
 //render post
 app.get('/profile',function(request,response){
-          response.render('profilePage')
+          response.render('profile-page')
 })
 
-
-//catch all
+//
+//catch all (delete this piece of code)
 app.get('*',function(request,response){
           response.status(404).send('uh oh! page not found!')
 })
+
+// // error handler
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+//
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
+
+
+
 
 
 
