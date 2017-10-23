@@ -1,35 +1,35 @@
 //- home-page
 
 html(lang="en")
-head
-meta(charset="UTF-8")
-title ePIC
-body
-h1#logo ePIC
+	head
+		meta(charset="UTF-8")
+		title ePIC
+	body
+		h1#logo ePIC
 
-div 
-form(action="", method="POST")
-img(src="./icons/profile.png")
+		div 
+			form(action="", method="POST")
+				img(src="./icons/profile.png")
 
-br
-label(for="comment") Comment
-input#comment(type="submit", comment="text")
-button(#like)
-input(type="submit", value="like")
-div 
-navbar(class= "button")
-button(#home-page)
-a(href='home-page') 
-div
-#home.icons
-button(#profile-page)
-a(href='profile-page') 
-div
-#profile.icons
-button(#add-pic)
-a(href='post-page') 
-div
-#add.icons
+					br
+						label(for="comment") Comment
+							input#comment(type="submit", comment="text")
+						button(#like)
+							input(type="submit", value="like")
+		div 
+			navbar(class= "button")
+				button(#home-page)
+					a(href='home-page') 
+						div
+							#home.icons
+				button(#profile-page)
+					a(href='profile-page') 
+						div
+							#profile.icons
+				button(#add-pic)
+					a(href='post-page') 
+						div
+							#add.icons
 
 
 script(type="text/javascript", src="server.js")
