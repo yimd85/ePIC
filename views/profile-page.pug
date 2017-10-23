@@ -1,1 +1,36 @@
 //- profile-page
+form(action="#", method="post")
+	.form-control
+		label.header Profile Photo:
+		input#image(type="file", name="profile_photo", placeholder="Photo", required="", capture="")
+	.form-control
+		label.header First Name :
+		input#first_name(type="text", name="first_name", placeholder="First Name", title="Please enter your First Name", required="")
+	.form-control
+		label.header Last Name :
+		input#last_name(type="text", name="last_name", placeholder="Last Name", title="Please enter your Last Name", required="")
+	.form-control
+		label.header Email :
+		input#email(type="email", name="email", placeholder="Email", title="Please enter a valid email", required="")
+	input.register(type="submit", value="Register")
+
+h3 Your Photos
+	.wrapper
+		img(src="./icons/profile.png", width="400", height="auto")
+
+div 
+	navbar(class= "button")
+		button(#home-page)
+			a(href='home-page') 
+				div
+					#home.icons
+		button(#profile-page)
+			a(href='profile-page') 
+				div
+					#profile.icons
+		button(#add-pic)
+			a(href='post-page') 
+				div
+					#add.icons
+
+
