@@ -9,16 +9,16 @@ html(lang="en")
 
 		form(action="", method="POST")
 
-			br
-				input#fileupload(type="file", name="fileupload", value="fileupload")
-				label(for="fileupload")  Select a file to upload
-				input(type="submit", value="submit")
-			br
-				label(for="comment") Comment
-				input#comment(type="submit", comment="text")
-			br
-				input(type="submit", value="Post")
-			br
+		
+			input#fileupload(type="file", name="fileupload", value="fileupload")
+			label(for="fileupload")  Upload to ePIC
+			input(type="submit", value="submit")
+	
+			label(for="comment") Comment
+			input#comment(type="submit", comment="text")
+	
+			input(type="submit", value="Post")
+		
 	div 
 			navbar(class= "button")
 				button(#home-page)
@@ -35,7 +35,6 @@ html(lang="en")
 							#add.icons
 
 
-
-		script(type="text/javascript", src="server.js")
+script(type="text/javascript", src="server.js")
 
 			

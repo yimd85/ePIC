@@ -4,32 +4,33 @@
      
 //- | !DOCTYPE html>
 html(lang="en")
-head
-meta(charset="UTF-8")
-title ePIC
-body
-h1#logo ePIC
+  head
+    meta(charset="UTF-8")
+    title ePIC
+  body
+    h1#logo ePIC
 
 
-form(action='', method='post')
-  label(for='email') Email: 
-  input#email(type='text', name='email')
-  br
-  label(for='firstname') First Name: 
-  input#username(type='text', name='firstname')
-  br
-  label(for='lastname') Last Name: 
-  input#username(type='text', name='lastname')
-  br
-  label(for='password') Password: 
-  input#password(type='text', name='password')
-  br
-  button Login
+    form(action='', method='post')
+      
+      label(for='email') Email: 
+      input#email(type='text', name='email')
+    
+      label(for='firstname') First Name: 
+      input#username(type='text', name='firstname')
+    
+      label(for='lastname') Last Name: 
+      input#username(type='text', name='lastname')
+    
+      label(for='password') Password: 
+      input#password(type='text', name='password')
+    
+      a(href='login-page.pug') Already a User
+    
+      button Login
 
 
 
 
-br
-a(href='/') Already a User
-br
+
 script(type="text/javascript", src="server.js")

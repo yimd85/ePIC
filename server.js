@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //logon page
-app.get('/',function(request,response){
+app.get('/login',function(request,response){
           response.render('login-page');
 });
 
