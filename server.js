@@ -1,7 +1,7 @@
-
-var express = require('express')
+// 'use strict'
+var express = require('express');
 var path    = require("path");
-var bodyParser= require('body-parser')
+var bodyParser= require('body-parser');
 var app = express();
 
 //table creation variables
@@ -23,7 +23,7 @@ const { Client } = require('pg');
 //   }
 //   client.end();
 // });
-
+app.use(express.static('./public'))
 
 app.set('view engine','pug');
 app.use(express.static(__dirname));
