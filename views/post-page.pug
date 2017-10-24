@@ -7,33 +7,31 @@ html(lang="en")
 		h1#logo ePIC
 
 
-		form(action="", method="POST")
-
-		
-			input#fileupload(type="file", name="fileupload", value="fileupload")
-			label(for="fileupload")  Upload to ePIC
-			input(type="submit", value="submit")
-	
-			label(for="comment") Comment
-			input#comment(type="submit", comment="text")
-	
-			input(type="submit", value="Post")
+	form(action="", method="POST")
+    
+		input#fileupload(type="file", name="fileupload", value="fileupload")
+		label(for="fileupload")  Upload to ePIC 
+    
+		label(for="comment") Comment
+		input#comment(type="text", comment="text")
+		input(type="submit", value="Post")
 		
 	div 
-			navbar(class= "button")
-				button(#home-page)
-					a(href='home-page') 
-						div
-							#home.icons
-				button(#profile-page)
-					a(href='profile-page') 
-						div
-							#profile.icons
-				button(#add-pic)
-					a(href='post-page') 
-						div
-							#add.icons
+	navbar(class= "button")
 
+	a(href='home-page') 
+		div
+			#home.icons
+
+	a(href='profile-page') 
+		div
+			#profile.icons
+	a(href='post-page') 
+		div
+			#add.icons
+
+
+include partials/footer.pug
 
 script(type="text/javascript", src="server.js")
 
