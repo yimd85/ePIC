@@ -4,17 +4,18 @@ html(lang="en")
 	head
 		meta(charset="UTF-8")
 		title ePIC
-		//- link(rel='stylesheet', type='text/css', href='style.css')
+		link(rel='stylesheet', type='text/css', href='style.css')
 		link(rel='stylesheet', type='text/css', href='home.css')
 		script(type='text/javascript', src='/server.js')
 	body
-		h1#logo ePIC
+		h1#logo
+			img(src="./icons/logo.png", height='100px', width='100px')
 
 		div 
 			form(action="", method="POST")
-				img(src="./icons/profile.png")
-				label(for="comment") Comment
-					input#comment(type="submit", comment="text")
+				img(src="./icons/profile.png", height='200px', width='200px' )
+				textarea(for="comment") 
+					//- input#comment(type="submit", comment="text")
 				button(#like)
 					input(type="submit", value="like")
 		div 

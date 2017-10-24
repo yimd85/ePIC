@@ -4,13 +4,18 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     title ePIC
+    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', type='text/css', href='home.css')
+    script(type='text/javascript', src='/server.js')
   body
-    h1#logo ePIC
+    h1#logo
+      img(src="./icons/logo.png", height='100px', width='100px')
+ 
 
     div
       form(action="#", method="post")
         .form-control
-        label.header Profile Photo:
+        label.header Add a Photo:
         input#image(type="file", name="profile_photo", placeholder="Photo", required="", capture="")
         .form-control
         label.header First Name :
@@ -21,6 +26,7 @@ html(lang="en")
         .form-control
         label.header Email :
         input#email(type="email", name="email", placeholder="Email", title="Please enter a valid email", required="")
+        div  
         input.register(type="submit", value="Register")
 
       h3 Your Photos
