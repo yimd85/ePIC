@@ -11,3 +11,30 @@ body {
     background-repeat: no-repeat;
     background-size: 40px 40px
 }*/
+/*.flex-container {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: column;
+   flex-direction: column;
+}
+*/
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+	/*align-self: flex-start;
+    align-items: flex-start;*/
+    width: 400px;
+    height: 400px;
+/*    flex-direction: column;
+*/}
+
+.flex-item {
+    background-color: cornflowerblue;
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+    display: flex;
+
+}
