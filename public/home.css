@@ -1,17 +1,20 @@
 /*home.css*/
+
 body {
-	text-align: center;
-	background-color: #66ccff;
+    text-align: center;
+    background-color: #66ccff;
 }
 
-/*#icons.logo {
-	width: 100%;
+
+/*#icons.logo {width: 100%;
     height: auto;
     float: left;
     font-family: courier;
     background-repeat: no-repeat;
     background-size: 40px 40px
 }*/
+
+
 /*.flex-container {
    display: -webkit-flex;
    display: flex;
@@ -19,6 +22,7 @@ body {
    flex-direction: column;
 }
 */
+
 .flex-container {
     display: -webkit-flex;
     display: flex;
@@ -26,14 +30,23 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-/*    height: 400px;
-*//*    margin-left: 30%;
-*/}
+    /*    height: 400px;
+*/
+    /*    margin-left: 30%;
+*/
+}
 
 .flex-item {
     background-color: cornflowerblue;
-/*	align-self: auto
-*/    width: 100%;
+    /*	align-self: auto
+*/
+    width: 100%;
     height: auto;
     margin: 10px;
+}
+
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
