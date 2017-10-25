@@ -2,7 +2,7 @@
 var express = require('express')
 var router = express.Router();
 //new post photos
-var posts = require('../postImages/uploads');
+var posts = require('./models/post');
 var multer = require('multer'); //require multer(coipied and pasted)
 
 var app = express()
