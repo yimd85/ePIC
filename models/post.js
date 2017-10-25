@@ -37,8 +37,8 @@ function Posts() {
 Posts.prototype.addProduct = function(params, filename) {
 	this.postlist.push({
 		text: params.text,
-		fileName: '/images/user-images/' + filename,
-		thumbnail: '/images/user-images/thumbnails/' + filename,
+		fileName: '/postImages/uploads' + filename,
+		thumbnail: '/postImages/uploads/thumbnails/' + filename,
 		id: nextUserImageId++
 	});
 };

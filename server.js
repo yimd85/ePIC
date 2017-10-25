@@ -53,6 +53,11 @@ app.post('/signup',function(request,response){
 });
 
 
+
+app.post('/post',function(request,response){
+  console.log('test')
+});
+
 app.get('/signup',function(request,response){
           response.render('sign-up');
 });
