@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ePIC</title>
+    <link rel="stylesheet" type="text/css" href="/public/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/home.css"/>
+  </head>
+    <body>
+      <h1 id="logo"><img src="./icons/logo.png" height="100px" width="100px"/></h1>
+
+
+      <!-- <form action="/post" method="post">
+        <input type="file" name="userFile" />
+      <br>
+        <textarea type="text" name='postmessage' cols="50" rows="5" placeholder="type message here" required></textarea>
+        <input type='submit' value="ePIC" name='submit'> -->
+
+      <form id="uploadForm" enctype="multipart/form-data" method="post">
+        <input type="file" name="fileupload" />
+        <textarea type="text" name='postmessage' cols="50" rows="5" placeholder="type message here" required></textarea>
+        <input type="submit" value="Upload File" name="submit">
+      </form>
+      <!-- </form> -->
+
+
+
+    </body>
+
+
+          <footer>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+            <div class="navbar">
+              <div class="container"><a href="./home"><img src="./icons/home.png" height="50px" width="50px"/></a><a href="./post"><img src="./icons/add.png" height="50px" width="50px"/></a><a href="./profile"><img src="./icons/profile.png" height="50px" width="50px"/></a></div>
+            </div>
+          </footer>
+
+</html>

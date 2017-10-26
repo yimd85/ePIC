@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ePic Home Page</title>
+    <link rel="stylesheet" type="text/css" href="/public/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/home.css">
+  </head>
+
+
+
+
+  <body>
+    <span id="logo">
+          <img src="./icons/logo.png" height="200px" width="200px"/>
+    </span>
+
+    <div>
+           <div id="profile">
+              <img src="./photos/sawsry.jpg" height="300px" width="300px"/>
+           </div>
+     </div>
+
+
+    <% anythingWeWant.forEach(function(postArray){ %>
+      <div class ='flex-container' >
+        <h4>
+          <img class ='flex-item' src= '<%=postArray.photoPath %>'>
+          <br>
+          <%=postArray.text %>
+        </h4>
+
+      </div>
+      <% }); %>
+
+
+      <footer>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+        <div class="navbar">
+          <div class="container"><a href="./home"><img src="./icons/home.png" height="50px" width="50px"/></a><a href="./post"><img src="./icons/add.png" height="50px" width="50px"/></a><a href="./profile"><img src="./icons/profile.png" height="50px" width="50px"/></a></div>
+        </div>
+      </footer>
+
+  </body>
+</html>

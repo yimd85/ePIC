@@ -1,35 +1,18 @@
-// 'use strict'
 var express = require('express');
+var multer = require('multer');
+var app = express();
 var path    = require("path");
 var bodyParser= require('body-parser');
-var app = express();
 
 //table creation variables
 var User = require("./models/user.js");
 
-// const { Client } = require('pg');
-
-// // const client = new Client({
-// //   connectionString: process.env.DATABASE_URL,
-// //   ssl: true,
-// // });
-// //
-// // client.connect();
-// //
-// // client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-// //   if (err) throw err;
-// //   for (let row of res.rows) {
-// //     console.log(JSON.stringify(row));
-// //   }
-// //   client.end();
-// // });
-app.use(express.static('./public'))
-
+// app.use(express.static('./public'));
 app.set('view engine','pug');
+app.set('view engine','ejs');
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
+// app.use(express.static(path.join(__dirname, 'photo')));
 
 
 //logon page
@@ -37,47 +20,83 @@ app.get('/login',function(request,response){
           response.render('login-page');
 });
 
-//signup
-app.post('/signup',function(request,response){
-  User
-    .findAll()
-      .then(function(){
-        User.create({
-            email: request.body.email,
-            firstname: request.body.firstname,
-            lastname: request.body.lastname,
-            password: request.body.password
-        })
-          response.redirect('/');
-        })
-});
-
-
-
-app.post('/post',function(request,response){
-  console.log('test')
-});
 
 app.get('/signup',function(request,response){
           response.render('sign-up');
 });
 
+//signup
+app.post('/signup',function(request,response){
+  User
+  .findAll()
+  .then(function(){
+    User.create({
+      email: request.body.email,
+      firstname: request.body.firstname,
+      lastname: request.body.lastname,
+      password: request.body.password
+    })
+    response.redirect('/');
+  })
+});
 
+var postArray = [
+  {text: "this is the alley image", photoPath: "/photos/alley.JPG"},
+  {text: "bridge image", photoPath: "/photos/bridge.JPG"},
+  {text: "roman empire", photoPath: "/photos/rome.JPG"},
+];//We will need to make this into a database. This was just placeholder array
 
 //render homepage
 app.get('/home',function(request,response){
-          response.render('home-page')
+          response.render('homeEJS', {anythingWeWant:postArray});
 })
-
 
 //render post
 app.get('/post',function(request,response){
-          response.render('post-page')
+
+          response.render('postEJS')
 })
 
 
+//------------------multer stuff
+var storage = multer.diskStorage({
+	destination: function(req, file, callback) {
+		callback(null, './photos')
+	},
+	filename: function(req, file, callback) {
+		callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+	}
+})
 
-//render post
+
+app.post('/post', function(request, response) {
+
+  var upload = multer({
+		storage: storage,
+		fileFilter: function(request, file, callback) {
+			var ext = path.extname(file.originalname)
+			if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
+				return callback(res.end('Only images are allowed'), null)
+			}
+			callback(null, true)
+		}
+	}).single('fileupload');
+	upload(request, response, function(err) {
+
+    var fileUpload = "/photos/"+request.file.filename;
+    var posting = request.body.postmessage;
+    var newStuff = {text:posting, photoPath:fileUpload}
+    console.log(newStuff);
+    console.log(fileUpload);
+    postArray.push(newStuff);
+
+    response.redirect('/home')
+
+	})
+});
+//end multer stuff----------------
+
+//render profile
 app.get('/profile',function(request,response){
           response.render('profile-page')
 })
@@ -86,23 +105,7 @@ app.get('/profile',function(request,response){
 //catch all (delete this piece of code)
 app.get('*',function(request,response){
           response.status(404).send('uh oh! page not found!')
-})
-
-// // error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
-
-
-
-
-
+});
 
 //port
 app.listen(process.env.PORT || 3000,function(){

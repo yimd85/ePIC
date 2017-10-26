@@ -17,11 +17,13 @@
   },
   "homepage": "https://github.com/yimd85/ePIC#readme",
   "dependencies": {
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "multer": "^1.3.0",
     "pg": "^7.3.0",
     "pug": "^2.0.0-rc.4",
-    "sequelize": "^4.15.2"
+    "sequelize": "^4.15.2",
+    "sharp": "^0.18.4"
   },
   "devDependencies": {},
   "description": ""
