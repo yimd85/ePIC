@@ -3,31 +3,32 @@ html(lang="en")
 	head
 		meta(charset="UTF-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title ePIC
+		title ePIC Post Page
 		link(rel='stylesheet', type='text/css', href='style.css')
-		link(rel='stylesheet', type='text/css', href='home.css')
+		link(rel='stylesheet', type='text/css', href='/public/home.css')
+		script(type='text/javascript', src="post.js")
 		script(type='text/javascript', src="server.js")
+
 	body
 		h1#logo
 			img(src="./icons/logo.png", height='100px', width='100px') 
 
 
-	form(action="", method="POST")
-		
+	form(id="uploadForm" enctype="multipart/form-data" , method="post")
 		label(for="fileupload") Upload to ePIC 
-		input#fileupload(type="file", name="fileupload", value="fileupload")
-		div
-		input(type="submit", value="POST")
-		div
-		label(for="comment") Comment
-		input#comment(type="text", comment="text")
-		input(type="submit", value="Post")
+		input(type="file", name="fileupload")
+		textarea(type="text" name='postmessage' cols="50" rows="5" placeholder="type message here" required)
+		input(type="submit", value="Upload File", name="submit")
+		//- div
+		//- label(for="comment") Comment
+		//- input#comment(type="text", comment="text")
+		//- input(type="submit", value="Post")
 		
 	
 
 
 include partials/footer.pug
 
-script(type="text/javascript", src ="server.js")
+//- script(type="text/javascript", src ="server.js")
 
 			

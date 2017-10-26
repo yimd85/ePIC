@@ -3,16 +3,18 @@ var multer = require('multer');
 var app = express();
 var path    = require("path");
 var bodyParser= require('body-parser');
-
 //table creation variables
 var User = require("./models/user.js");
 
+//testing to see if post works
+var Post = require("./models/post.js");
+
 // app.use(express.static('./public'));
 app.set('view engine','pug');
-app.set('view engine','ejs');
+// app.set('view engine','ejs');
 app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static(path.join(__dirname, 'photo')));
+app.use(express.static(path.join(__dirname, 'photo')));
 
 
 //logon page
@@ -48,13 +50,14 @@ var postArray = [
 
 //render homepage
 app.get('/home',function(request,response){
-          response.render('homeEJS', {anythingWeWant:postArray});
+  //change home-page to use ejs or pug
+          response.render('home-page', {anythingWeWant:postArray});
 })
 
 //render post
 app.get('/post',function(request,response){
-
-          response.render('postEJS')
+//change post-page to use ejs or pug
+          response.render('post-page')
 })
 
 
@@ -64,9 +67,10 @@ var storage = multer.diskStorage({
 		callback(null, './photos')
 	},
 	filename: function(req, file, callback) {
-		callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+		callback(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/')[1]);
+      // this belongs after date now==> path.extname(file.originalname))
 	}
-})
+});
 
 
 app.post('/post', function(request, response) {
@@ -84,6 +88,7 @@ app.post('/post', function(request, response) {
 	upload(request, response, function(err) {
 
     var fileUpload = "/photos/"+request.file.filename;
+    //took out .filename
     var posting = request.body.postmessage;
     var newStuff = {text:posting, photoPath:fileUpload}
     console.log(newStuff);

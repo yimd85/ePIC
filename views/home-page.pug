@@ -4,10 +4,10 @@ html(lang="en")
 	head
 		meta(charset="UTF-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title ePIC
-		link(rel='stylesheet', type='text/css', href='style.css')
-		link(rel='stylesheet', type='text/css', href='home.css')
-		script(type='text/javascript', src='/server.js')
+		title ePIC Home Page
+		link(rel='stylesheet', type='text/css', href='/public/style.css')
+		link(rel='stylesheet', type='text/css', href='/public/home.css')
+		//- script(type='text/javascript', src='/server.js')
 	body
 		span#logo
 			img(src="./icons/logo.png", height='200px', width='200px')
@@ -16,37 +16,28 @@ html(lang="en")
 			#profile
 				img(src="./photos/sawsry.jpg", height='300px', width='300px' )
 				//- textarea(for="comment") 
-				//- 	//- input#comment(type="submit", comment="text")
+				//-   //- input#comment(type="submit", comment="text")
 				//- button(#like)
-				//- 	input(type="submit", value="like")
+				//-   input(type="submit", value="like")
 		div.flex-container
-				img.flex-item(src="./photos/alley.jpg")
-				img.flex-item(src="./photos/bridge.jpg")
-				img.flex-item(src="./photos/camino.jpg")
-				img.flex-item(src="./photos/cappadocia.jpg")
-				img.flex-item(src="./photos/florencedoor.jpg")
-				img.flex-item(src="./photos/kalymnos.jpg")
-		//- style.
-		//- 	.flex-container {
-		//- 	display: -webkit-flex;
-		//- 	display: flex;
-		//- 	width: 400px;
-		//- 	height: 250px;
-		//- 	background-color: lightgrey;
-		//- 	}
-		//- 	.flex-item {
-		//- 	background-color: cornflowerblue;
-		//- 	width: 100px;
-		//- 	height: 100px;
-		//- 	margin: 10px;
-		//- 	}
-		//- 	.flex-container
-		//- 		.flex-item img src="./photos/alley.JPG"
-		//- 		.flex-item flex item 2
-		//- 		.flex-item flex item 3
+			ul
+				each postArray in anythingWeWant
+					div(class= "flex-container")
+						postArray.flex-item(src='postArray.photoPath')
+							ul=[postArray.text]
+							img(class= 'flex-item', src=postArray.photoPath)
+							//- h4
+							//- li= [newStuff]
+				//- img.flex-item(src="./photos/alley.jpg")
+				//- img.flex-item(src="./photos/bridge.jpg")
+				//- img.flex-item(src="./photos/camino.jpg")
+				//- img.flex-item(src="./photos/cappadocia.jpg")
+				//- img.flex-item(src="./photos/florencedoor.jpg")
+				//- img.flex-item(src="./photos/kalymnos.jpg")
+		
+				
+		
 
-
-//- THIS IS TO TEST IF GIT WORKS
 
 include partials/footer.pug
-script(type="text/javascript", src="server.js")
+//- script(type="text/javascript", src="server.js")

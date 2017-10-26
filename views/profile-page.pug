@@ -1,41 +1,51 @@
 //- profile-page
 
 html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title ePIC
-    link(rel='stylesheet', type='text/css', href='style.css')
-    link(rel='stylesheet', type='text/css', href='home.css')
-    //- script(type='text/javascript', src='/server.js')
-  body
-    h1#logo
-      img(src="./icons/logo.png", height='100px', width='100px')
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title ePIC Profile Page
+		//- link(rel='stylesheet', type='text/css', href='style.css')
+		link(rel='stylesheet', type='text/css', href='/public/home.css')
+		script(type='text/javascript', src='/server.js')
+	body
+		h1#logo
+			img(src="./icons/logo.png", height='100px', width='100px')
  
 
-    div
-      form(action="#", method="post")
-        .form-control
-        label.header Add a Photo:
-        input#image(type="file", name="profile_photo", placeholder="Photo", required="", capture="")
-        .form-control
-        label.header First Name :
-        input#first_name(type="text", name="first_name", placeholder="First Name", title="Please enter your First Name", required="")
-        .form-control
-        label.header Last Name :
-        input#last_name(type="text", name="last_name", placeholder="Last Name", title="Please enter your Last Name", required="")
-        .form-control
-        label.header Email :
-        input#email(type="email", name="email", placeholder="Email", title="Please enter a valid email", required="")
-        div  
-        input.register(type="submit", value="Register")
+		div
+			form(id="uploadForm" enctype="multipart/form-data" , method="POST")
+				.form-control
+				label.header Add a Photo:
+				input#image(type="file", name="profile_photo", placeholder="Photo", required="", capture="")
+				div
+				.form-control
+				label.header First Name :
+				input#first_name(type="text", name="first_name", placeholder="First Name", title="Please enter your First Name", required="")
+				div
+				.form-control
+				label.header Last Name :
+				input#last_name(type="text", name="last_name", placeholder="Last Name", title="Please enter your Last Name", required="")
+				div
+				.form-control
+				label.header Email :
+				input#email(type="email", name="email", placeholder="Email", title="Please enter a valid email", required="")
+				div  
+				input.register(type="submit", value="Register")
+				div
+				label(for="fileupload") Upload to ePIC 
+				input(type="file", name="fileupload", value="Post")
+				div
+				textarea(type="text" name='postmessage' cols="50" rows="5" placeholder="type message here" required)
+				input(type="submit", value="Upload File", name="submit")
 
-      h3 Your Photos
-      .wrapper
-      img(src="./icons/profile.png", width="400", height="auto")
-    
-      
-  
+
+			h3 Your Photos
+			.wrapper
+			img(src="./icons/profile.png", width="400", height="auto")
+		
+			
+	
 
 
 include partials/footer.pug              
