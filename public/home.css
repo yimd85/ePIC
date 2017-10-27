@@ -31,6 +31,15 @@ body {
     margin: 10px;
 }
 
+/*.imagefooter {
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+}*/
+
 .navbar {
     overflow: hidden;
     background-color: #e6f7ff;

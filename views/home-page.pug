@@ -24,6 +24,7 @@ html(lang="en")
 				each postArray in anythingWeWant
 					div(class= "flex-container")
 						postArray.flex-item(src='postArray.photoPath')
+							//- div.imagefooter
 							ul=[postArray.text]
 							img(class= 'flex-item', src=postArray.photoPath)
 							//- include partials/imagefooter.pug
