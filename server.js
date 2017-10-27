@@ -102,7 +102,7 @@ app.post('/post', function(request, response) {
 //end multer stuff----------------
 
 var bioArray = [
-  {email: 'yimd85@gmail.com', firstN: 'david', lastN: 'yim'}
+  {email: 'yimd85@gmail.com', firstN: 'david', lastN: 'yim',bioPath:''}
 ];
 
 //render profile
@@ -136,14 +136,9 @@ app.post('/profile',function(request,response){
   upload(request, response, function(err) {
 
         var profilestuff = "/photos/profilepic/"+request.file.filename;
-        //took out .filename
-        var newPicture = {bioPath:profilestuff}
-        console.log(profilestuff);
-        console.log(newPicture);
+        console.log(bioArray[0].bioPath);
+        bioArray[0].bioPath = profilestuff
 
-        bioArray.push(newPicture);
-        console.log(bioArray);
-        
         response.redirect('/profile')
       })
 })
