@@ -5,50 +5,41 @@ html(lang="en")
 		meta(charset="UTF-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		title ePIC Profile Page
-		//- link(rel='stylesheet', type='text/css', href='style.css')
+		link(rel='stylesheet', type='text/css', href='style.css')
 		link(rel='stylesheet', type='text/css', href='/public/home.css')
-		script(type='text/javascript', src='/server.js')
+		//- /*script(type='text/javascript', src='/server.js')*/
 	body
 		h1#logo
 			img(src="./icons/logo.png", height='100px', width='100px')
- 
+		form(id="profilephoto" enctype="multipart/form-data" , method="post")
+			label(for="fileupload") Upload profile pic 
+			input(type="file", name="uploadpictureForm")
+			input(type="submit", value="Upload File", name="submit")
 
-		div
-			form(id="uploadForm" enctype="multipart/form-data" , method="POST")
-				.form-control
-				label.header Add a Photo:
-				input#image(type="file", name="profile_photo", placeholder="Photo", required="", capture="")
-				div
-				.form-control
-				label.header First Name :
-				input#first_name(type="text", name="first_name", placeholder="First Name", title="Please enter your First Name", required="")
-				div
-				.form-control
-				label.header Last Name :
-				input#last_name(type="text", name="last_name", placeholder="Last Name", title="Please enter your Last Name", required="")
-				div
-				.form-control
-				label.header Email :
-				input#email(type="email", name="email", placeholder="Email", title="Please enter a valid email", required="")
-				div  
-				input.register(type="submit", value="Register")
-				div
-				label(for="fileupload") Upload to ePIC 
-				input(type="file", name="fileupload", value="Post")
-				div
-				textarea(type="text" name='postmessage' cols="50" rows="5" placeholder="type message here" required)
-				input(type="submit", value="Upload File", name="submit")
+	div.flex-container
+		ul
+			each bioArray in weWantAnything
+				div(class= "flex-container")
+					bioArray.flex-item(src='bioArray.photoPath')
+						ul=[bioArray.firstN]
+						ul=[bioArray.lastN]
+						ul=[bioArray.email]
+						img(class= 'flex-item', src=bioArray.bioPath)
+	div.flex-container
+		ul
+			each postArray in anythingWeWant
+				div(class= "flex-container")
+					postArray.flex-item(src='postArray.photoPath')
+						img(class= 'flex-item', src=postArray.photoPath)
 
-
-			h3 Your Photos
-			.wrapper
-			img(src="./icons/profile.png", width="400", height="auto")
-		
-			
+			//- h3 Your Photos
+			//- .wrapper
+			//- img(src="./icons/profile.png", width="400", height="auto")
+			//- 
+			//- 
 	
 
 
 include partials/footer.pug              
 
 //- script(type="text/javascript", src="server.js")
-

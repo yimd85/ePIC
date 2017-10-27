@@ -101,10 +101,53 @@ app.post('/post', function(request, response) {
 });
 //end multer stuff----------------
 
+var bioArray = [
+  {email: 'yimd85@gmail.com', firstN: 'david', lastN: 'yim'}
+];
+
 //render profile
 app.get('/profile',function(request,response){
-          response.render('profile-page')
+          response.render('profile-page',{weWantAnything:bioArray,anythingWeWant:postArray});
 })
+
+var storagePicPic = multer.diskStorage({
+	destination: function(req, file, callback) {
+		callback(null, './photos/profilepic')
+	},
+	filename: function(req, file, callback) {
+		callback(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/')[1]);
+      // this belongs after date now==> path.extname(file.originalname))
+	}
+});
+
+
+
+app.post('/profile',function(request,response){
+  var upload = multer({
+    storage: storagePicPic,
+    fileFilter: function(request, file, callback) {
+      var ext = path.extname(file.originalname)
+      if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
+        return callback(res.end('Only images are allowed'), null)
+      }
+      callback(null, true)
+    }
+  }).single('uploadpictureForm');
+  upload(request, response, function(err) {
+
+        var profilestuff = "/photos/profilepic/"+request.file.filename;
+        //took out .filename
+        var newPicture = {bioPath:profilestuff}
+        console.log(profilestuff);
+        console.log(newPicture);
+
+        bioArray.push(newPicture);
+        console.log(bioArray);
+        
+        response.redirect('/profile')
+      })
+})
+
 
 //
 //catch all (delete this piece of code)
