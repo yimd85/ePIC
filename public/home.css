@@ -6,15 +6,17 @@ body {
     text-align: center;
     background-color: #005780;
 }
+
+
 #logo {
-	float: left;
+	margin-right: 50%;
 }
 #profile{
-	margin-right: 20%;
+	margin-right: 0%;
 }
 
 
-.flex-container {
+.flex-container-image {
     display: -webkit-flex;
     display: flex;
     flex-flow: row wrap;
@@ -24,20 +26,37 @@ body {
     
 }
 
-.flex-item {
-    background-color: cornflowerblue;
+.flex-item-image {
+   /* background-color: cornflowerblue;*/
     width: 100%;
     height: auto;
-    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-/*.imagefooter {
-    overflow: hidden;
-    background-color: black;
+.flex-item{
+    width: 100%;
+}
+
+/*.flex-container-image-bottom{
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    
+}
+
+.flex-item-image-bottom {
+    background-color: white;
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 10%;
+    height: 15%;
 }*/
 
 .navbar {
@@ -46,6 +65,7 @@ body {
     position: fixed; /* Set the navbar to fixed position */
     bottom: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+    margin-top: 10px;
 }
 
 .navbar a {
@@ -53,7 +73,7 @@ body {
     padding: 14px 16px;
     text-decoration: none;
     left: 50%;
-
+    margin-top: 10px;
 }
 
 footer,

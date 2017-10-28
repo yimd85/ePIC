@@ -11,23 +11,22 @@ html(lang="en")
 	body
 		span#logo
 			img(src="./icons/logo.png", height='200px', width='200px')
-
-		div 
-			#profile
+			div#profile
 				img(src="./photos/sawsry.jpg", height='300px', width='300px' )
-				//- textarea(for="comment") 
-				//-   //- input#comment(type="submit", comment="text")
-				//- button(#like)
-				//-   input(type="submit", value="like")
-		div.flex-container
-			ul
-				each postArray in anythingWeWant
-					div(class= "flex-container")
-						postArray.flex-item(src='postArray.photoPath')
-							//- div.imagefooter
-							ul=[postArray.text]
-							img(class= 'flex-item', src=postArray.photoPath)
-							//- include partials/imagefooter.pug
+				div.flex-container-image
+					ul
+						each postArray in anythingWeWant
+							div(class= "flex-container")
+								div(class= "flex-item-image")
+									postArray.flex-item-image(src='postArray.photoPath')
+										ul=[postArray.text]
+										img(class= 'flex-item', src=postArray.photoPath)
+									div
+										textarea(for="comment") Add Comment Here
+										input#comment(type="submit", comment="text")
+										button(#like)
+											input(type="submit", value="like")
+				
 
 							
 
