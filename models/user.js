@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+var passportLocalSequelize = require('passport-local-sequelize')
 
 if (process.env.DATABASE_URL) {
   var sequelize = new Sequelize(process.env.DATABASE_URL);
@@ -29,6 +30,8 @@ var User = sequelize.define('user', {
   lastname: Sequelize.STRING(100),
   password: Sequelize.STRING(100)
 });
+
+
 
 User.sync();
 

@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
+var passportLocalSequelize = require('passport-local-sequelize')
+
 var User = require("../models/user.js");
 
 

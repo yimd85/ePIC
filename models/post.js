@@ -28,6 +28,7 @@ var Post = sequelize.define('posting', {
         }
 });
 
+
 //there will always be 1 post at least
 Post.sync().then(function(){
   Post.create(
@@ -35,9 +36,6 @@ Post.sync().then(function(){
       text: "this is the alley image",
       photoPath: "/photos/alley.JPG"})
 });
-
-
-
 
 
 Post.sync();

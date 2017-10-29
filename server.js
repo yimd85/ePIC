@@ -4,8 +4,6 @@ var bodyParser= require('body-parser');
 var multer = require('multer');
 
 var Post = require('./models/post.js');
-
-
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
 
@@ -23,27 +21,9 @@ app.use('/',signonJS);
 app.use('/',postsJS);
 
 
-
-//temporary arrays
-// var postArray = [
-//   {text: "this is the alley image", photoPath: "/photos/alley.JPG"},
-//   {text: "bridge image", photoPath: "/photos/bridge.JPG"},
-//   {text: "roman empire", photoPath: "/photos/rome.JPG"},
-// ];//We will need to make this into a database. This was just placeholder array
-
 var bioArray = [
   {email: 'yimd85@gmail.com', firstN: 'david', lastN: 'yim',bioPath:''}
 ];
-
-//temporary arrays
-
-
-// app.get('/home',function(request,response){
-//     response.render('homeEJS.ejs',{anythingWeWant:postArray})
-// });
-
-
-
 
 //render profile
 app.get('/profile',function(request,response){
@@ -73,10 +53,8 @@ app.post('/profile',function(request,response){
     }
   }).single('uploadpictureForm');
   upload(request, response, function(err) {
-
         var profilestuff = "./photos/profilepic/"+request.file.filename;
         bioArray[0].bioPath = profilestuff
-
         response.redirect('/profile')
       })
 });

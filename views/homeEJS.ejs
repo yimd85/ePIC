@@ -24,19 +24,21 @@
 
     <% for(var i=0;i < anythingWeWant.length;i++){ %>
       <div class ='flex-container' >
+
         <%=anythingWeWant[i].dataValues.text %>
           <div class ='flex-item-image' >
-
-                        <img class ='flex-item' src= '<%=anythingWeWant[i].dataValues.photoPath %>'>
+                        <img class ='flex-item' src= '<%=anythingWeWant[i].dataValues.photoPath %>' >
                         <div>
-                            <textarea for="comment">Add Comment Here</textarea>
-                            <input id="comment" type="submit" comment="text"/>
-                            <a href="./home">
-                              <img src="./icons/like.png" height="25px" width="25px">
-                            </a>
+                            <form>
+                              <textarea name='postcomment' placeholder="type message here" required></textarea>
+                              <a href="./home">
+                                <img src="./icons/like.png" height="25px" width="25px">
+                              </a>
+                              <input id="comment" value='comment' type="submit">
+                            </form>
                         </div>
-
         <% }; %>
+
           </div>
     </div>
 
