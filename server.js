@@ -45,8 +45,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'photo')));
 
 
-app.use('/',signonJS);
-app.use('/',postsJS);
+app.use('/go',signonJS);
+app.use('/go',postsJS);
+
+app.get('/',function(request,response){
+  response.render('login-page.pug')
+})
 
 
 var bioArray = [
@@ -54,7 +58,7 @@ var bioArray = [
 ];
 
 //render profile
-app.get('/profile',function(request,response){
+app.get('/go/profile',function(request,response){
   Post.findAll().then(function(postArray){
           response.render('profile-page.pug',{weWantAnything:bioArray,anythingWeWant:postArray});
         })
@@ -69,7 +73,7 @@ var storagePicPic = multer.diskStorage({
 	}
 });
 
-app.post('/profile',function(request,response){
+app.post('/go/profile',function(request,response){
   var upload = multer({
     storage: storagePicPic,
     fileFilter: function(request, file, callback) {
@@ -83,7 +87,7 @@ app.post('/profile',function(request,response){
   upload(request, response, function(err) {
         var profilestuff = "./photos/profilepic/"+request.file.filename;
         bioArray[0].bioPath = profilestuff
-        response.redirect('/profile')
+        response.redirect('/go/profile')
       })
 });
 

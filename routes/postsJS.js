@@ -21,6 +21,9 @@ router.get('/post',function(request,response){
 
 
 
+
+
+
 var storage = multer.diskStorage({
 	destination: function(req, file, callback) {
 		callback(null, './photos')
@@ -61,7 +64,7 @@ router.post('/post', function(request, response) {
     // postArray.push(newStuff);
 
 	   })
-  response.redirect('/home');
+  response.redirect('/test/home');
   })
 });
 
