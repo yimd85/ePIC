@@ -8,12 +8,34 @@ var passport = require('passport');
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
-var indexJS = require('/routes/indexJS');
+// var indexJS = require('/routes/indexJS');
 
 var EpicStrategy = require('passport-local').Strategy;
-var SequelizeStore = require('<connect-session-sequelize')(session.Store);
+// var SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 var app = express();
+
+
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
+
+
+
 
 app.set('view engine','pug');
 app.set('view engine','ejs');
@@ -66,45 +88,45 @@ app.post('/profile',function(request,response){
 });
 
 //passport code
-app.use(session({
-  secret: "epic",
-  store: new SequelizeStore({
-    db: connection
-  })
-}));
-
-passport.use(new EpicStrategy(function(username, password, done) {
-    console.log(username);
-    console.log(password);
-    User.findOne({where: {username: username}})
-    .then(project =>{
-      if(project === null){
-        done(null,false);
-      }else{
-        console.log("username found in database");
-          console.log(project.password)
-          const hash = project.password
-          const useridcurrent = project.id
-          bcrypt.compare(password, hash, function(err, response){
-            if(response === true){
-              return done(null, {user_id: useridcurrent});
-            }else{
-              return done(null, false ,{message: "Incorrect Credentials"});
-            }
-          })
-        }
-
-    })
-
-
-    }));
-    passport.serializeUser(function(user_name, done) {
-      done(null, user_name);
-    });
-
-    passport.deserializeUser(function(user_name, done) {
-      done(null, user_name);
-    });
+// app.use(session({
+//   secret: "epic",
+//   store: new SequelizeStore({
+//     db: connection
+//   })
+// }));
+//
+// passport.use(new EpicStrategy(function(username, password, done) {
+//     console.log(username);
+//     console.log(password);
+//     User.findOne({where: {username: username}})
+//     .then(project =>{
+//       if(project === null){
+//         done(null,false);
+//       }else{
+//         console.log("username found in database");
+//           console.log(project.password)
+//           const hash = project.password
+//           const useridcurrent = project.id
+//           bcrypt.compare(password, hash, function(err, response){
+//             if(response === true){
+//               return done(null, {user_id: useridcurrent});
+//             }else{
+//               return done(null, false ,{message: "Incorrect Credentials"});
+//             }
+//           })
+//         }
+//
+//     })
+//
+//
+//     }));
+//     passport.serializeUser(function(user_name, done) {
+//       done(null, user_name);
+//     });
+//
+//     passport.deserializeUser(function(user_name, done) {
+//       done(null, user_name);
+//     });
 //end of passport code
 
 //catch all (delete this piece of code)
