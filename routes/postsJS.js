@@ -38,7 +38,7 @@ router.post('/post', function(request, response) {
 		fileFilter: function(request, file, callback) {
 			var ext = path.extname(file.originalname)
 			if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
-				return callback(res.end('Only images are allowed'), null)
+				return callback(response.end('Only images are allowed'), null)
 			}
 			callback(null, true)
 		}
@@ -51,7 +51,8 @@ router.post('/post', function(request, response) {
     console.log(posting);
     Post.findAll().then(function(){
       Post.create({
-        text: `${posting}`,
+        text: `${posting}`
+        ,
         photoPath: `${fileUpload}`
         })
 

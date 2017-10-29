@@ -30,12 +30,12 @@ var Post = sequelize.define('posting', {
 
 
 //there will always be 1 post at least
-Post.sync().then(function(){
-  Post.create(
-    { id:1,
-      text: "this is the alley image",
-      photoPath: "/photos/alley.JPG"})
-});
+// Post.sync().then(function(){
+//   Post.create(
+//     { id:1,
+//       text: "this is the alley image",
+//       photoPath: "/photos/alley.JPG"})
+// });
 
 
 Post.sync();
