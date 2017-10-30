@@ -8,7 +8,7 @@ var passport = require('passport');
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
-var indexJS = require('/routes/indexJS');
+// var indexJS = require('/routes/indexJS');
 
 var EpicStrategy = require('passport-local').Strategy;
 var SequelizeStore = require('<connect-session-sequelize')(session.Store);
