@@ -85,7 +85,7 @@ app.post('/go/profile',function(request,response){
     }
   }).single('uploadpictureForm');
   upload(request, response, function(err) {
-        var profilestuff = "./photos/profilepic/"+request.file.filename;
+        var profilestuff = "../photos/profilepic/"+request.file.filename;
         bioArray[0].bioPath = profilestuff
         response.redirect('/go/profile')
       })

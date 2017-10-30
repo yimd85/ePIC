@@ -64,7 +64,7 @@ router.post('/post', function(request, response) {
     // postArray.push(newStuff);
 
 	   })
-  response.redirect('/test/home');
+  response.redirect('/go/home');
   })
 });
 
