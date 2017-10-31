@@ -39,7 +39,7 @@ router.post('/signup',function(request,response){
       lastname: request.body.lastname,
       password: request.body.password
     })
-    response.redirect('/login');
+    response.redirect('/go/login');
   })
 });
 

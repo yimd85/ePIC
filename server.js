@@ -8,12 +8,9 @@ var session = require("express-session");
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
-
 var connection = require('./utility/sql.js');
 var User = require('./models/user.js');
 var bcrypt = require('bcrypt');
-
-// var indexJS = require('/routes/indexJS');
 
 var EpicStrategy = require('passport-local').Strategy;
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -45,30 +42,6 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
 // var indexJS = require('/routes/indexJS');
 
 var EpicStrategy = require('passport-local').Strategy;
-// var SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-
-
-
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
-client.connect();
-
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
-
-
-
 
 
 app.set('view engine','pug');
@@ -173,9 +146,6 @@ passport.use(new EpicStrategy(function(username, password, done) {
 
 
 
-
-
-
 //catch all (delete this piece of code)
 app.get('*',function(request,response){
           response.status(404).send('uh oh! page not found!')
@@ -183,9 +153,9 @@ app.get('*',function(request,response){
 
 //part of hope this works
 connection.sync().then(function() {
-  console.log("Database ready");
-//port
-app.listen(process.env.PORT || 3000,function(){
-  console.log('app is listening on port 3000');
-});
+    console.log("Database ready");
+  //port
+    app.listen(process.env.PORT || 3000,function(){
+      console.log('app is listening on port 3000');
+    });
 });
