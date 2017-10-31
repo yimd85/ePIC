@@ -19,36 +19,8 @@ var EpicStrategy = require('passport-local').Strategy;
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // console.log(connection);
-//hope this works
+//hope this works passport db stuff
 connection.sync();
-
-const {
-  Client
-} = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
-client.connect();
-
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
-
-
-// var indexJS = require('/routes/indexJS');
-
-var EpicStrategy = require('passport-local').Strategy;
-// var SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-
-
 
 const { Client } = require('pg');
 
@@ -66,9 +38,7 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   }
   client.end();
 });
-
-
-
+//end passport db stuff
 
 
 app.set('view engine','pug');
