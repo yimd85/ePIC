@@ -11,6 +11,11 @@ var User = require("../models/user.js");
 router.get('/login',function(request,response){
           response.render('login-page.pug');
 });
+router.post('/login',function(request,response){
+  console.log(request)
+          // response.render('home-page.pug');
+});
+
 
 
 router.get('/signup',function(request,response){

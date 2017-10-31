@@ -1,19 +1,46 @@
 var express = require('express');
-var path    = require("path");
+var app = express();
 var bodyParser= require('body-parser');
 var multer = require('multer');
-var bcrypt = require('bcrypt');
+var path = require("path");
 var passport = require('passport');
-
+var session = require("express-session");
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
+var connection = require('./utility/sql.js');
+var User = require('./models/user.js');
+var bcrypt = require('bcrypt');
+
 // var indexJS = require('/routes/indexJS');
 
 var EpicStrategy = require('passport-local').Strategy;
-var SequelizeStore = require('<connect-session-sequelize')(session.Store);
+var SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-var app = express();
+// console.log(connection);
+//hope this works
+connection.sync();
+
+const {
+  Client
+} = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
+
 
 app.set('view engine','pug');
 app.set('view engine','ejs');
@@ -26,6 +53,12 @@ app.use(express.static(path.join(__dirname, 'photo')));
 app.use('/',signonJS);
 app.use('/',postsJS);
 
+app.use(session({
+  secret: "epic",
+  store: new SequelizeStore({
+  db: connection
+  })
+}));
 
 var bioArray = [
   {email: 'yimd85@gmail.com', firstN: 'david', lastN: 'yim',bioPath:''}
@@ -39,12 +72,12 @@ app.get('/profile',function(request,response){
 })
 
 var storagePicPic = multer.diskStorage({
-	destination: function(req, file, callback) {
-		callback(null, './photos/profilepic')
-	},
-	filename: function(req, file, callback) {
-		callback(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/')[1]);
-	}
+  destination: function(req, file, callback) {
+    callback(null, './photos/profilepic')
+  },
+  filename: function(req, file, callback) {
+    callback(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/')[1]);
+  }
 });
 
 app.post('/profile',function(request,response){
@@ -66,12 +99,6 @@ app.post('/profile',function(request,response){
 });
 
 //passport code
-app.use(session({
-  secret: "epic",
-  store: new SequelizeStore({
-    db: connection
-  })
-}));
 
 passport.use(new EpicStrategy(function(username, password, done) {
     console.log(username);
@@ -96,8 +123,9 @@ passport.use(new EpicStrategy(function(username, password, done) {
 
     })
 
+  }));
 
-    }));
+
     passport.serializeUser(function(user_name, done) {
       done(null, user_name);
     });
@@ -112,7 +140,11 @@ app.get('*',function(request,response){
           response.status(404).send('uh oh! page not found!')
 });
 
+//part of hope this works
+connection.sync().then(function() {
+  console.log("Database ready");
 //port
 app.listen(process.env.PORT || 3000,function(){
   console.log('app is listening on port 3000');
-})
+});
+});
