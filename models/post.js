@@ -1,4 +1,4 @@
-
+//posts and comments
 var Sequelize = require('sequelize');
 
 if (process.env.DATABASE_URL) {
@@ -15,8 +15,7 @@ if (process.env.DATABASE_URL) {
 }
 
 
-
-//datebase for users
+//datebase for posts
 var Post = sequelize.define('posting', {
   text: {
             type: Sequelize.STRING(100),
@@ -28,16 +27,17 @@ var Post = sequelize.define('posting', {
         }
 });
 
+//datebase for comments
+var Commenting = sequelize.define('Comment', {
+  comment: {
+            type: Sequelize.STRING(100),
+            allowNull: true
+        }
+});
 
-//there will always be 1 post at least
-// Post.sync().then(function(){
-//   Post.create(
-//     { id:1,
-//       text: "this is the alley image",
-//       photoPath: "/photos/alley.JPG"})
-// });
+
+Commenting.belongsTo(Post);
 
 
 Post.sync();
-
 module.exports = Post;

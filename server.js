@@ -8,6 +8,7 @@ var session = require("express-session");
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
+<<<<<<< HEAD
 var connection = require('./utility/sql.js');
 var User = require('./models/user.js');
 var bcrypt = require('bcrypt');
@@ -40,6 +41,34 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   client.end();
 });
 
+=======
+// var indexJS = require('/routes/indexJS');
+
+var EpicStrategy = require('passport-local').Strategy;
+// var SequelizeStore = require('connect-session-sequelize')(session.Store);
+>>>>>>> c2c39c82a43b959f8d86c0363e96c5123e3501a7
+
+
+
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
+
+
 
 
 app.set('view engine','pug');
@@ -50,8 +79,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'photo')));
 
 
-app.use('/',signonJS);
-app.use('/',postsJS);
+app.use('/go',signonJS);
+app.use('/go',postsJS);
+
+app.get('/',function(request,response){
+  response.render('login-page.pug')
+})
 
 app.use(session({
   secret: "epic",
@@ -61,11 +94,11 @@ app.use(session({
 }));
 
 var bioArray = [
-  {email: 'yimd85@gmail.com', firstN: 'david', lastN: 'yim',bioPath:''}
+  {email: 'yimd85@gmail.com', firstN: 'david', lastN: 'yim',bioPath:'../photos/sawsry.JPG'}
 ];
 
 //render profile
-app.get('/profile',function(request,response){
+app.get('/go/profile',function(request,response){
   Post.findAll().then(function(postArray){
           response.render('profile-page.pug',{weWantAnything:bioArray,anythingWeWant:postArray});
         })
@@ -80,24 +113,27 @@ var storagePicPic = multer.diskStorage({
   }
 });
 
-app.post('/profile',function(request,response){
-  var upload = multer({
-    storage: storagePicPic,
-    fileFilter: function(request, file, callback) {
-      var ext = path.extname(file.originalname)
-      if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
-        return callback(res.end('Only images are allowed'), null)
-      }
-      callback(null, true)
+var upload = multer({
+  storage: storagePicPic,
+  fileFilter: function(request, file, callback) {
+    var ext = path.extname(file.originalname)
+    if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg'!== '.PNG' && ext !== '.JPG' && ext !== '.GIF' && ext !== '.JPEG') {
+      return callback(response.redirect('/go/profile'), null)
     }
-  }).single('uploadpictureForm');
+    callback(null, true)
+  }
+}).single('uploadpictureForm');
+
+
+app.post('/go/profile',function(request,response){
   upload(request, response, function(err) {
-        var profilestuff = "./photos/profilepic/"+request.file.filename;
+        var profilestuff = "../photos/profilepic/"+request.file.filename;
         bioArray[0].bioPath = profilestuff
-        response.redirect('/profile')
+        response.redirect('/go/profile')
       })
 });
 
+<<<<<<< HEAD
 //passport code
 
 passport.use(new EpicStrategy(function(username, password, done) {
@@ -134,6 +170,11 @@ passport.use(new EpicStrategy(function(username, password, done) {
       done(null, user_name);
     });
 //end of passport code
+=======
+
+
+
+>>>>>>> c2c39c82a43b959f8d86c0363e96c5123e3501a7
 
 //catch all (delete this piece of code)
 app.get('*',function(request,response){
