@@ -8,7 +8,7 @@ var session = require("express-session");
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
-<<<<<<< HEAD
+
 var connection = require('./utility/sql.js');
 var User = require('./models/user.js');
 var bcrypt = require('bcrypt');
@@ -41,12 +41,12 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   client.end();
 });
 
-=======
+
 // var indexJS = require('/routes/indexJS');
 
 var EpicStrategy = require('passport-local').Strategy;
 // var SequelizeStore = require('connect-session-sequelize')(session.Store);
->>>>>>> c2c39c82a43b959f8d86c0363e96c5123e3501a7
+
 
 
 
@@ -133,7 +133,7 @@ app.post('/go/profile',function(request,response){
       })
 });
 
-<<<<<<< HEAD
+
 //passport code
 
 passport.use(new EpicStrategy(function(username, password, done) {
@@ -170,11 +170,11 @@ passport.use(new EpicStrategy(function(username, password, done) {
       done(null, user_name);
     });
 //end of passport code
-=======
 
 
 
->>>>>>> c2c39c82a43b959f8d86c0363e96c5123e3501a7
+
+
 
 //catch all (delete this piece of code)
 app.get('*',function(request,response){
