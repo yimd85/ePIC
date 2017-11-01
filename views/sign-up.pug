@@ -12,10 +12,14 @@ html(lang="en")
     //- script(type='text/javascript', src='/server.js')
   body
     h1#logo
-      img(src="./icons/logo.png", height='100px', width='100px')
+      img(src="../icons/logo.png", height='100px', width='100px')
 
-
+    
     form(action='', method='post')
+      if errors
+        ul.errors
+          each error in errors
+            div(class="alert alert-danger")= error.msg
       div
       label(for='email') Email: 
       input#email(type='text', name='email')
@@ -29,9 +33,9 @@ html(lang="en")
       label(for='password') Password: 
       input#password(type='text', name='password')
     
-      button Login
+      button Register
       div
-      a(href='login-page.pug') Already a User
+      a(href='/login') Already a User
     
 
 

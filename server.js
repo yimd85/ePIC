@@ -8,7 +8,7 @@ var session = require("express-session");
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
-
+var router = express.Router();
 var connection = require('./utility/sql.js');
 var User = require('./models/user.js');
 var bcrypt = require('bcrypt');
@@ -49,12 +49,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'photo')));
 
 
-app.use('/go',signonJS);
-app.use('/go',postsJS);
+app.use('/',signonJS);
+app.use('/',postsJS);
 
 app.get('/',function(request,response){
   response.render('login-page.pug')
 })
+
+app.set(express.static('./public'));
 
 app.use(session({
   secret: "epic",
@@ -126,36 +128,23 @@ passport.use(new EpicStrategy(function(username, password, done) {
             }
           })
         }
-
     })
-
   }));
 
 
-    passport.serializeUser(function(user_name, done) {
-      done(null, user_name);
-    });
 
-    passport.deserializeUser(function(user_name, done) {
-      done(null, user_name);
-    });
 //end of passport code
-
-
-
-
 
 
 //catch all (delete this piece of code)
 app.get('*',function(request,response){
-          response.status(404).send('uh oh! page not found!')
+    response.status(404).send('uh oh! page not found!')
 });
 
 //part of hope this works
 connection.sync().then(function() {
   console.log("Database ready");
-//port
 app.listen(process.env.PORT || 3000,function(){
   console.log('app is listening on port 3000');
-});
+  });
 });
