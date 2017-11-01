@@ -75,7 +75,7 @@ router.post('/signup',function(request,response){
       lastname: request.body.lastname,
       password: hash
     })
-    response.redirect('/login');
+    response.redirect('/go/login');
   })
 }
 });

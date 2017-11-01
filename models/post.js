@@ -28,7 +28,7 @@ var Post = sequelize.define('posting', {
 });
 
 //datebase for comments
-var Commenting = sequelize.define('Comment', {
+var Commenting = sequelize.define('commenting', {
   comment: {
             type: Sequelize.STRING(100),
             allowNull: true
@@ -36,8 +36,12 @@ var Commenting = sequelize.define('Comment', {
 });
 
 
-Commenting.belongsTo(Post);
+// Post.hasMany(Commenting);
+// Commenting.belongsTo(Post);
 
 
 Post.sync();
+// Commenting.sync();
+
 module.exports = Post;
+// module.exports = Commenting;

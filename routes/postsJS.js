@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Post = require('../models/post.js');
+var Commenting = require('../models/post.js');
 var multer = require('multer');
 var path    = require("path");
 
@@ -29,8 +30,35 @@ var upload = multer({
 
 // render homepage new stuff
 router.get('/home',function(request,response){
-  Post.findAll().then(function(postArray){
+  Post.findAll(
+  //   {
+  //   include:[{
+  //     model: Commenting
+  //   }]
+  // }
+)
+  .then(function(postArray){
     response.render('homeEJS.ejs',{anythingWeWant:postArray})
+  })
+});
+
+// Post.hasMany(Commenting);
+// Commenting.belongsTo(Post);
+
+
+router.post('/home/:id/comments',function(request,response){
+  Post.findById(reqest.params.id).
+  then(function(row){
+    if(!row){
+      response.status(404).send('could not find that post');
+      return;
+    }
+    row.createComment({
+      comment: request.body.comment,
+    }).
+    then(function(comment){
+      response.redirect('/go/home')
+    })
   })
 });
 

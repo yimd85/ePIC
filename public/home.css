@@ -23,7 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    
+
 }
 
 .flex-item-image {
@@ -39,16 +39,21 @@ body {
     width: 100%;
 }
 
+.flex-item-profile{
+    width: 20%;
+}
+
+
 /*.flex-container-image-bottom{
     display: -webkit-flex;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    position: fixed; 
-    bottom: 0; 
-    width: 100%; 
-    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
 }
 
 .flex-item-image-bottom {
@@ -79,5 +84,5 @@ body {
 footer,
 .push{
 	height: 50px;
-	margin-top: -50px 
+	margin-top: -50px
 }

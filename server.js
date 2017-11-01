@@ -8,12 +8,13 @@ var session = require("express-session");
 var Post = require('./models/post.js');
 var signonJS = require('./routes/signonJS');
 var postsJS = require('./routes/postsJS');
+<<<<<<< HEAD
 var router = express.Router();
+=======
+>>>>>>> 7080f64f9064bd0a68bb95cfef674c115c632f26
 var connection = require('./utility/sql.js');
 var User = require('./models/user.js');
 var bcrypt = require('bcrypt');
-
-// var indexJS = require('/routes/indexJS');
 
 var EpicStrategy = require('passport-local').Strategy;
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -22,7 +23,13 @@ var SequelizeStore = require('connect-session-sequelize')(session.Store);
 //hope this works passport db stuff
 connection.sync();
 
+<<<<<<< HEAD
 const { Client } = require('pg');
+=======
+const {
+  Client
+} = require('pg');
+>>>>>>> 7080f64f9064bd0a68bb95cfef674c115c632f26
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -38,7 +45,15 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   }
   client.end();
 });
+<<<<<<< HEAD
 //end passport db stuff
+=======
+
+
+// var indexJS = require('/routes/indexJS');
+
+var EpicStrategy = require('passport-local').Strategy;
+>>>>>>> 7080f64f9064bd0a68bb95cfef674c115c632f26
 
 
 app.set('view engine','pug');
@@ -136,6 +151,10 @@ passport.use(new EpicStrategy(function(username, password, done) {
 //end of passport code
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7080f64f9064bd0a68bb95cfef674c115c632f26
 //catch all (delete this piece of code)
 app.get('*',function(request,response){
     response.status(404).send('uh oh! page not found!')
@@ -143,8 +162,17 @@ app.get('*',function(request,response){
 
 //part of hope this works
 connection.sync().then(function() {
+<<<<<<< HEAD
   console.log("Database ready");
 app.listen(process.env.PORT || 3000,function(){
   console.log('app is listening on port 3000');
   });
 });
+=======
+    console.log("Database ready");
+  //port
+    app.listen(process.env.PORT || 3000,function(){
+      console.log('app is listening on port 3000');
+    });
+});
+>>>>>>> 7080f64f9064bd0a68bb95cfef674c115c632f26
