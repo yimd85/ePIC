@@ -53,10 +53,10 @@ router.use(expressValidator({
 
 //signup
 router.post('/signup',function(request,response){
-  request.checkBody('username', 'Username field cannot be empty.').notEmpty();
+  request.checkBody('email', 'Username field cannot be empty.').notEmpty();
   request.checkBody("password", "Password must be at least 8 characters and include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
   // req.checkBody('passwordmatch', 'Password must be between 8-100 characters long.').len(8, 100);
-  request.checkBody('passwordmatch', 'Passwords do not match, please try again.').equals(request.body.password);
+  // request.checkBody('passwordmatch', 'Passwords do not match, please try again.').equals(request.body.password);
   const errors = request.validationErrors();
   if (errors) {
     console.log(`errors: ${JSON.stringify(errors)}`);
@@ -75,7 +75,7 @@ router.post('/signup',function(request,response){
       lastname: request.body.lastname,
       password: hash
     })
-    response.redirect('/go/login');
+    response.redirect('login');
   })
 }
 });

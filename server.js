@@ -24,9 +24,6 @@ connection.sync();
 
 const { Client } = require('pg');
 
-const {
-  Client
-} = require('pg');
 
 
 const client = new Client({
@@ -83,7 +80,7 @@ var bioArray = [
 ];
 
 //render profile
-app.get('/go/profile',function(request,response){
+app.get('/profile',function(request,response){
   Post.findAll().then(function(postArray){
           response.render('profile-page.pug',{weWantAnything:bioArray,anythingWeWant:postArray});
         })
@@ -103,18 +100,18 @@ var upload = multer({
   fileFilter: function(request, file, callback) {
     var ext = path.extname(file.originalname)
     if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg'!== '.PNG' && ext !== '.JPG' && ext !== '.GIF' && ext !== '.JPEG') {
-      return callback(response.redirect('/go/profile'), null)
+      return callback(response.redirect('/profile'), null)
     }
     callback(null, true)
   }
 }).single('uploadpictureForm');
 
 
-app.post('/go/profile',function(request,response){
+app.post('/profile',function(request,response){
   upload(request, response, function(err) {
         var profilestuff = "../photos/profilepic/"+request.file.filename;
         bioArray[0].bioPath = profilestuff
-        response.redirect('/go/profile')
+        response.redirect('/profile')
       })
 });
 
@@ -156,17 +153,6 @@ app.get('*',function(request,response){
 });
 
 //part of hope this works
-connection.sync().then(function() {
-
-  console.log("Database ready");
 app.listen(process.env.PORT || 3000,function(){
   console.log('app is listening on port 3000');
-  });
-});
-
-    console.log("Database ready");
-  //port
-    app.listen(process.env.PORT || 3000,function(){
-      console.log('app is listening on port 3000');
-    });
-});
+})

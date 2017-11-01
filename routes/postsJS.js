@@ -22,7 +22,7 @@ var upload = multer({
   fileFilter: function(request, file, callback) {
     var ext = path.extname(file.originalname)
     if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg'!== '.PNG' && ext !== '.JPG' && ext !== '.GIF' && ext !== '.JPEG') {
-      return callback(response.redirect('/go/home'), null)
+      return callback(response.redirect('/home'), null)
     }
     callback(null, true)
   }
@@ -57,7 +57,7 @@ router.post('/home/:id/comments',function(request,response){
       comment: request.body.comment,
     }).
     then(function(comment){
-      response.redirect('/go/home')
+      response.redirect('/home')
     })
   })
 });
@@ -77,7 +77,7 @@ router.post('/post', function(request, response) {
 
       Post.create(full).then(
         function(){
-          response.redirect('/go/home');
+          response.redirect('/home');
   	   })
     })
 });
