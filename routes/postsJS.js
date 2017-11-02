@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Post = require('../models/post.js');
-var Commenting = require('../models/post.js');
+var Commenting = require('../models/comments.js');
 var multer = require('multer');
 var path    = require("path");
 
@@ -28,38 +28,43 @@ var upload = multer({
   }
 }).single('fileupload');
 
+
 // render homepage new stuff
 router.get('/home',function(request,response){
+  // Commenting.belongsTo(Post);
+  // Post.hasMany(Commenting);
+  // Post.belongsTo(Commenting);
+  // Commenting.hasMany(Post);
   Post.findAll(
   //   {
-  //   include:[{
-  //     model: Commenting
-  //   }]
+  //   include: [{ model: Commenting }]
   // }
 )
   .then(function(postArray){
     response.render('homeEJS.ejs',{anythingWeWant:postArray})
   })
-});
 
-// Post.hasMany(Commenting);
-// Commenting.belongsTo(Post);
+
+});
+//<---
+// <% anythingWeWant[i].commenting.forEach(function(comment){ %>
+//
+// <%=comment.message %>
+// <% }); %>
+//--->
+
 
 
 router.post('/home/:id/comments',function(request,response){
-  Post.findById(reqest.params.id).
-  then(function(row){
-    if(!row){
-      response.status(404).send('could not find that post');
-      return;
+    var test ={
+        postingid: request.params.id,
+        message: request.body.postcomment
     }
-    row.createComment({
-      comment: request.body.comment,
-    }).
-    then(function(comment){
-      response.redirect('/home')
-    })
-  })
+    Commenting.create(test).then(
+      function(){
+            console.log(typeof(request.params.id));
+            response.redirect('/home');
+     })
 });
 
 //render post

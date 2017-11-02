@@ -25,23 +25,20 @@ var Post = sequelize.define('posting', {
             type: Sequelize.STRING(100),
             allowNull: true
         }
+        // ,
+  // commentingstuff:[{
+  //   type: Sequelize.INTEGER,
+  //   references: {
+  //     model:{
+  //       tableName: 'commenting',
+  //
+  //     foreignKey: 'postingid'
+  //     }
+  //   }
+  // }]
 });
-
-//datebase for comments
-var Commenting = sequelize.define('commenting', {
-  comment: {
-            type: Sequelize.STRING(100),
-            allowNull: true
-        }
-});
-
-
-// Post.hasMany(Commenting);
-// Commenting.belongsTo(Post);
 
 
 Post.sync();
-// Commenting.sync();
 
 module.exports = Post;
-// module.exports = Commenting;

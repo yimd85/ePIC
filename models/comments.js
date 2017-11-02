@@ -1,4 +1,5 @@
 //posts and comments
+var Post = require('./post.js');
 var Sequelize = require('sequelize');
 
 if (process.env.DATABASE_URL) {
@@ -16,7 +17,11 @@ if (process.env.DATABASE_URL) {
 
 
 var Commenting = sequelize.define('commenting', {
-  comment: {
+  postingid: {
+            type: Sequelize.STRING(100),
+            allowNull: true
+        },
+  message: {
             type: Sequelize.STRING(100),
             allowNull: true
         }
@@ -24,6 +29,5 @@ var Commenting = sequelize.define('commenting', {
 
 
 Commenting.sync();
-
 
 module.exports = Commenting;

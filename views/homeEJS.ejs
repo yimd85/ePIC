@@ -28,18 +28,21 @@
         <%=anythingWeWant[i].text %>
           <div class ='flex-item-image' >
             <%=anythingWeWant[i].id %>
-                        <img class ='flex-item' src= '<%=anythingWeWant[i].dataValues.photoPath %>' >
+            <div class ='flex-container' >
+
+                        <img class ='flex-item' src= '<%=anythingWeWant[i].photoPath %>' >
                         <div>
-                            <form>
+                            <form action="/home/<%= anythingWeWant[i].id %>/comments" method = "post">
                               <textarea name='postcomment' placeholder="type message here" required></textarea>
                               <a href="./home">
                                 <img src="../icons/like.png" height="25px" width="25px">
                               </a>
                               <input id="comment" value='comment' type="submit">
                             </form>
+
                         </div>
         <% }; %>
-
+            </div>
           </div>
     </div>
 
