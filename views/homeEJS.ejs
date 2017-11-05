@@ -22,14 +22,19 @@
      </div>
 
 
-    <% for(var i=0;i < anythingWeWant.length;i++){ %>
+    <% for(var i=anythingWeWant.length-1; i>=0; i--){ %>
       <div class ='flex-container' >
 
-        <%=anythingWeWant[i].text %>
+          <div class ='flex-container' >
+                <%for(var j=weWantAnything.length-1; j>=0; j--){%>
+                  <% if(weWantAnything[j].postingid == anythingWeWant[i].id){%>
+                      <div><%=weWantAnything[j].message %></div>
+                  <% } %>
+              <% } %>
+          </div>
+            Post: <%=anythingWeWant[i].text %>
           <div class ='flex-item-image' >
-            <%=anythingWeWant[i].id %>
             <div class ='flex-container' >
-
                         <img class ='flex-item' src= '<%=anythingWeWant[i].photoPath %>' >
                         <div>
                             <form action="/home/<%= anythingWeWant[i].id %>/comments" method = "post">
@@ -39,9 +44,8 @@
                               </a>
                               <input id="comment" value='comment' type="submit">
                             </form>
-
                         </div>
-        <% }; %>
+    <% }; %>
             </div>
           </div>
     </div>

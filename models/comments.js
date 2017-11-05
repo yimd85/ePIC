@@ -27,7 +27,10 @@ var Commenting = sequelize.define('commenting', {
         }
 });
 
+// Commenting.belongsTo(Post);
 
 Commenting.sync();
+
+
 
 module.exports = Commenting;

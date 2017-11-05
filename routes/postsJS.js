@@ -19,8 +19,8 @@ var storage = multer.diskStorage({
 
 var upload = multer({
   storage: storage,
-  fileFilter: function(request, file, callback) {
-    var ext = path.extname(file.originalname)
+  fileFilter: function(request, response, callback) {
+    var ext = path.extname(response.originalname)
     if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg'!== '.PNG' && ext !== '.JPG' && ext !== '.GIF' && ext !== '.JPEG') {
       return callback(response.redirect('/home'), null)
     }
@@ -31,27 +31,15 @@ var upload = multer({
 
 // render homepage new stuff
 router.get('/home',function(request,response){
-  // Commenting.belongsTo(Post);
-  // Post.hasMany(Commenting);
-  // Post.belongsTo(Commenting);
-  // Commenting.hasMany(Post);
-  Post.findAll(
-  //   {
-  //   include: [{ model: Commenting }]
-  // }
-)
-  .then(function(postArray){
-    response.render('homeEJS.ejs',{anythingWeWant:postArray})
+
+  Post.findAll().then(function(postArray){
+      Commenting.findAll().then(function(commentArray){
+          response.render('homeEJS.ejs',{anythingWeWant:postArray
+            , weWantAnything:commentArray
+          })
+      })
   })
-
-
 });
-//<---
-// <% anythingWeWant[i].commenting.forEach(function(comment){ %>
-//
-// <%=comment.message %>
-// <% }); %>
-//--->
 
 
 
@@ -62,7 +50,6 @@ router.post('/home/:id/comments',function(request,response){
     }
     Commenting.create(test).then(
       function(){
-            console.log(typeof(request.params.id));
             response.redirect('/home');
      })
 });

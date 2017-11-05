@@ -1,4 +1,5 @@
 //posts and comments
+var Commenting = require('./comments.js');
 var Sequelize = require('sequelize');
 
 if (process.env.DATABASE_URL) {
@@ -25,20 +26,14 @@ var Post = sequelize.define('posting', {
             type: Sequelize.STRING(100),
             allowNull: true
         }
-        // ,
-  // commentingstuff:[{
-  //   type: Sequelize.INTEGER,
-  //   references: {
-  //     model:{
-  //       tableName: 'commenting',
-  //
-  //     foreignKey: 'postingid'
-  //     }
-  //   }
-  // }]
-});
 
+});
+// 
+// Post.hasMany(Commenting);
+// Commenting.belongsTo(Post, {foreignKey: 'postingId'});
 
 Post.sync();
+
+
 
 module.exports = Post;

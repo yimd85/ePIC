@@ -43,10 +43,6 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
 
 //end passport db stuff
 
-
-
-// var indexJS = require('/routes/indexJS');
-
 var EpicStrategy = require('passport-local').Strategy;
 
 
@@ -97,14 +93,15 @@ var storagePicPic = multer.diskStorage({
 
 var upload = multer({
   storage: storagePicPic,
-  fileFilter: function(request, file, callback) {
-    var ext = path.extname(file.originalname)
+  fileFilter: function(request, response, callback) {
+    var ext = path.extname(response.originalname)
     if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg'!== '.PNG' && ext !== '.JPG' && ext !== '.GIF' && ext !== '.JPEG') {
       return callback(response.redirect('/profile'), null)
     }
     callback(null, true)
   }
 }).single('uploadpictureForm');
+
 
 
 app.post('/profile',function(request,response){
@@ -114,6 +111,8 @@ app.post('/profile',function(request,response){
         response.redirect('/profile')
       })
 });
+
+
 
 
 //passport code
