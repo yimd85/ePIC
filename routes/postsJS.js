@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Post = require('../models/post.js');
-var Commenting = require('../models/comments.js');
 var multer = require('multer');
 var path    = require("path");
+var Post = require('../models/post.js');
+var Commenting = require('../models/comments.js');
 
 router.use(express.static(path.join(__dirname, 'photo')));
 
@@ -47,7 +47,8 @@ router.post('/home/:id/comments',function(request,response){
     var test ={
         postingid: request.params.id,
         message: request.body.postcomment
-    }
+    };
+
     Commenting.create(test).then(
       function(){
             response.redirect('/home');
@@ -73,10 +74,6 @@ router.post('/post', function(request, response) {
   	   })
     })
 });
-
-
-
-
 
 
 module.exports = router;

@@ -7,9 +7,9 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     title ePIC Sign Up
-    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', type='text/css', href='/public/style.css')
     link(rel='stylesheet', type='text/css', href='/public/home.css')
-    //- script(type='text/javascript', src='/server.js')
+
   body
     h1#logo
       img(src="../icons/logo.png", height='100px', width='100px')
@@ -23,24 +23,18 @@ html(lang="en")
             div(class="alert alert-danger")= error.msg
       div
       label(for='email') Email: 
-      input#email(type='text', name='email')
+      input#email(type='text', name='email' required)
       div
       label(for='firstname') First Name: 
-      input#username(type='text', name='firstname')
+      input#username(type='text', name='firstname' required)
       div
       label(for='lastname') Last Name: 
-      input#username(type='text', name='lastname')
+      input#username(type='text', name='lastname' required)
       div
       label(for='password') Password: 
-      input#password(type='text', name='password')
-    
+      input#password(type='password', name='password' required)
+      div
       button Register
       div
       a(href='/login') Already a User
     
-
-
-
-
-
-script(type="text/javascript", src="server.js")

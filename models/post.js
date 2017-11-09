@@ -1,23 +1,10 @@
 //posts and comments
-var Commenting = require('./comments.js');
 var Sequelize = require('sequelize');
-
-if (process.env.DATABASE_URL) {
-  var sequelize = new Sequelize(process.env.DATABASE_URL);
-} else {
-  var sequelize = new Sequelize({
-    database: process.env.DB_NAME,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST || "localhost",
-    port: process.env.DB_PORT || 5432,
-    dialect: "postgres"
-  });
-}
+var connection = require('../utility/sql.js')
 
 
 //datebase for posts
-var Post = sequelize.define('posting', {
+var Post = connection.define('posting', {
   text: {
             type: Sequelize.STRING(100),
             allowNull: true
@@ -28,12 +15,7 @@ var Post = sequelize.define('posting', {
         }
 
 });
-// 
-// Post.hasMany(Commenting);
-// Commenting.belongsTo(Post, {foreignKey: 'postingId'});
 
 Post.sync();
-
-
 
 module.exports = Post;
