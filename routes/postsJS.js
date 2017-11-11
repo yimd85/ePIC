@@ -30,8 +30,9 @@ var upload = multer({
 
 
 // render homepage new stuff
-router.get('/home',function(request,response){
-
+router.get('/home',authenticationMiddleware(),function(request,response){
+  console.log("authenticated user "+request.user.user_id);
+  console.log("is user authenticated "+request.isAuthenticated());
   Post.findAll().then(function(postArray){
       Commenting.findAll().then(function(commentArray){
           response.render('homeEJS.ejs',{anythingWeWant:postArray
@@ -56,7 +57,7 @@ router.post('/home/:id/comments',function(request,response){
 });
 
 //render post
-router.get('/post',function(request,response){
+router.get('/post',authenticationMiddleware(),function(request,response){
           response.render('post-page.pug')
 })
 
@@ -74,6 +75,18 @@ router.post('/post', function(request, response) {
   	   })
     })
 });
+
+
+function authenticationMiddleware() {
+  return (request, response, next) => {
+    console.log(`request.session.passport.user: ${JSON.stringify(request.session.passport)}`);
+
+    if (request.isAuthenticated()) return next();
+    response.redirect('/login')
+  }
+}
+
+
 
 
 module.exports = router;
