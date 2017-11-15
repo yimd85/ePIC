@@ -31,7 +31,7 @@ var upload = multer({
 
 // render homepage new stuff
 router.get('/home',authenticationMiddleware(),function(request,response){
-  console.log("authenticated user "+request.user.user_id);
+  console.log("authenticated user "+request.user.user_identifier);
   console.log("is user authenticated "+request.isAuthenticated());
   Post.findAll().then(function(postArray){
       Commenting.findAll().then(function(commentArray){

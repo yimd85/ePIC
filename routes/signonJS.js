@@ -33,7 +33,7 @@ router.post('/signup',function(request,response){
               lastname: request.body.lastname,
               password: hash
             }).then(function(results) {
-              const user_id = results.email;
+              const user_identifier = results.email;
               request.login(user_id, function(err){
                 response.redirect('/home');
               })

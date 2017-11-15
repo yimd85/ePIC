@@ -75,10 +75,10 @@ passport.use(new LocalStrategy(
             console.log("username found in database");
               console.log(project.password)
               const hash = project.password
-              const useridcurrent = project.id
+              const useridcurrentEmail = project.email
               bcrypt.compare(password, hash, function(err, response){
                 if(response === true){
-                  return done(null, {user_id: useridcurrent});
+                  return done(null, {user_identifier: useridcurrentEmail});
                 }else{
                   return done(null, false ,{message: "Incorrect Credentials"});
                 }
