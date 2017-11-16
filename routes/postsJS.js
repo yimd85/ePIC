@@ -56,6 +56,55 @@ router.post('/home/:id/comments',function(request,response){
      })
 });
 
+
+router.post('/home/:id/delete',function(request, response){
+  var find = request.params.id;
+  console.log(find);
+  Commenting.destroy({where:{postingid: find}}).then(function(){
+    Post.destroy({where:{id: find}}).then(
+      function(){
+        response.redirect('/home');
+     })
+   })
+})
+
+var empty = [];
+
+router.get('/update',function(request, response){
+        // console.log("testin"+empty[empty.length-1]);
+        var chappy = empty[empty.length-1];
+        Post.findById(chappy).then(function(commentArray){
+          // console.log(commentArray);
+            response.render('updateEJS.ejs',{doWeWantAnything:commentArray
+            })
+        })
+})
+
+router.post('/home/:id/update',function(request, response){
+        var akdfjadl = request.params.id;
+        empty.push(akdfjadl);
+        response.redirect('/update');
+
+})
+
+
+router.post('/home/:id/updatecomments',function(request, response){
+        console.log('!testing updates tocomments!');
+        console.log(request.body.postupdatedcomment);
+        console.log(request.params.id);
+        var thisthang = request.params.id
+        var updatedstuff = {
+          text: request.body.postupdatedcomment
+        };
+        Post.findById(thisthang).then(function(row){
+        row.update(updatedstuff)
+      }).then(function(){
+        response.redirect('/home');
+
+      })
+})
+
+
 //render post
 router.get('/post',authenticationMiddleware(),function(request,response){
           response.render('post-page.pug')

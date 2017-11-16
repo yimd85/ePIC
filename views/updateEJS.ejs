@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ePic Homepage!</title>
+    <link rel="stylesheet" type="text/css" href="../public/style.css">
+    <link rel="stylesheet" type="text/css" href="../public/home.css">
+  </head>
+
+
+
+
+  <body>
+    <span id="logo">
+          <img src="../icons/logo.png" height="200px" width="200px"/>
+    </span>
+
+
+
+      <div class ='flex-container' >
+          <div class ='flex-container' >
+
+                      <div>
+                        Post: <%=doWeWantAnything.text %>
+
+                      </div>
+                      <form action="/home/<%= doWeWantAnything.id %>/updatecomments"  method = "post">
+                        <textarea name='postupdatedcomment' placeholder="update posts here" required></textarea>
+                        <input id="comment" value='update' type="submit">
+                      </form>
+
+          </div>
+
+    </div>
+
+
+
+
+  </body>
+  <footer>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+    <div class="navbar">
+      <div class="container"><a href="./home"><img src="../icons/home.png" height="50px" width="50px"/></a><a href="./post"><img src="../icons/add.png" height="50px" width="50px"/></a></div>
+    </div>
+  </footer>
+</html>

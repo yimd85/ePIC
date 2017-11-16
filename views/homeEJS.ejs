@@ -14,7 +14,7 @@
     <span id="logo">
           <img src="../icons/logo.png" height="200px" width="200px"/>
     </span>
-<!-- 
+<!--
     <div>
            <div id="profile">
               <img src="../photos/sawsry.JPG" height="300px" width="300px"/>
@@ -28,13 +28,21 @@
           <div class ='flex-container' >
                 <%for(var j=weWantAnything.length-1; j>=0; j--){%>
                   <% if(weWantAnything[j].postingid == anythingWeWant[i].id){%>
-                      <div><%=weWantAnything[j].message %></div>
+                      <div>
+                        <%=weWantAnything[j].message %>
+                      </div>
                   <% } %>
               <% } %>
           </div>
             Post: <%=anythingWeWant[i].text %>
           <div class ='flex-item-image' >
             <div class ='flex-container' >
+                  <form action="/home/<%= anythingWeWant[i].id %>/delete" method = "post">
+                    <input value='deletePost' type="submit">
+                  </form>
+                  <form action="/home/<%= anythingWeWant[i].id %>/update" method = "post">
+                    <input value='updatePost' type="submit">
+                  </form>
                         <img class ='flex-item' src= '<%=anythingWeWant[i].photoPath %>' >
                         <div>
                             <form action="/home/<%= anythingWeWant[i].id %>/comments" method = "post">
