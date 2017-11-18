@@ -2,9 +2,7 @@ var Sequelize = require('sequelize');
 var connection = require('../utility/sql.js')
 
 
-
-//datebase for users
-var User = connection.define('user', {
+var Like = connection.define('liking', {
   email: {
             type: Sequelize.STRING(100),
             isUnique: true,
@@ -13,13 +11,15 @@ var User = connection.define('user', {
                 isEmail : true
             }
         },
-  firstname: Sequelize.STRING(100),
-  lastname: Sequelize.STRING(100),
-  password: Sequelize.STRING(100)
+  postnumber: {
+            type: Sequelize.STRING(100),
+            allowNull: true
+        }
 });
 
 
 
-User.sync();
+Like.sync();
 
-module.exports = User;
+
+module.exports = Like;

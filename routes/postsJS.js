@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var path    = require("path");
+
 var Post = require('../models/post.js');
 var Commenting = require('../models/comments.js');
+var Liking = require('../models/like.js');
 
 router.use(express.static(path.join(__dirname, 'photo')));
 
@@ -97,8 +99,8 @@ router.post('/home/:id/updatecomments',function(request, response){
           text: request.body.postupdatedcomment
         };
         Post.findById(thisthang).then(function(row){
-        row.update(updatedstuff)
-      }).then(function(){
+        row.update(updatedstuff)}).then(function(){
+
         response.redirect('/home');
 
       })
@@ -135,7 +137,25 @@ function authenticationMiddleware() {
   }
 }
 
+//likes
+router.get('/like',function(request, response){
+    response.render('likeEJS.ejs')
+})
 
+router.post('/like/:id/this',authenticationMiddleware(),function(request, response){
+    console.log('liking this as(post): '+request.user.user_identifier);
+    console.log('liked #(post): '+request.params.id);
+    var likingThisShit ={
+        email: request.user.user_identifier,
+        postnumber: request.params.id
+    };
+
+    Liking.create(likingThisShit).then(
+      function(){
+
+            response.redirect('/like')
+     })
+})
 
 
 module.exports = router;

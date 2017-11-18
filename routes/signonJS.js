@@ -34,11 +34,22 @@ router.post('/signup',function(request,response){
               password: hash
             }).then(function(results) {
               const user_identifier = results.email;
-              request.login(user_id, function(err){
-                response.redirect('/home');
-              })
+                response.redirect('/login');
             });
           })
+});
+
+
+
+router.get('/logout', function(request, response) {
+
+
+     request.session.destroy(function(err) {
+         if(err){throw err}
+         response.render('login-page.pug');
+
+     });
+
 });
 
 

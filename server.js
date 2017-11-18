@@ -2,27 +2,27 @@ var express = require('express');
 var bodyParser= require('body-parser');
 var multer = require('multer');
 var path = require("path");
-var expressValidator = require('express-validator')
-
-var signonJS = require('./routes/signonJS');
-var postsJS = require('./routes/postsJS');
-// var bioJS = require('./routes/bioJS');
-
-var router = express.Router();
-var connection = require('./utility/sql.js');
 var Sequelize = require('sequelize');
-
-var Post = require('./models/post.js');
-var User = require('./models/user.js');
-
+var expressValidator = require('express-validator')
 var session = require("express-session");
 var passport = require('passport');
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
 var cookieParser = require('cookie-parser')
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt');
-
 var app = express();
+
+//routes
+var router = express.Router();
+var signonJS = require('./routes/signonJS');
+var postsJS = require('./routes/postsJS');
+
+//models
+var connection = require('./utility/sql.js');
+var Post = require('./models/post.js');
+var User = require('./models/user.js');
+var Like = require('./models/like.js');
+
 
 connection.sync();
 const { Client } = require('pg');
@@ -41,27 +41,17 @@ app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 app.use(express.static(path.join(__dirname, 'photo')));
-
 app.use(cookieParser())
-
-
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-
 }))
-
-
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use('/',signonJS);
 app.use('/',postsJS);
-// app.use('/',bioJS);
-
 
 
 
@@ -101,7 +91,7 @@ app.get('*',function(request,response){
     response.status(404).send('uh oh! page not found!')
 });
 
-//part of hope this works
+
 app.listen(process.env.PORT || 3000,function(){
   console.log('app is listening on port 3000');
 })

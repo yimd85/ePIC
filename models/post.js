@@ -1,4 +1,3 @@
-//posts and comments
 var Sequelize = require('sequelize');
 var connection = require('../utility/sql.js')
 

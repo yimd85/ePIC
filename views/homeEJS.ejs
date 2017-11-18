@@ -47,10 +47,10 @@
                         <div>
                             <form action="/home/<%= anythingWeWant[i].id %>/comments" method = "post">
                               <textarea name='postcomment' placeholder="type message here" required></textarea>
-                              <a href="./home">
-                                <img src="../icons/like.png" height="25px" width="25px">
-                              </a>
                               <input id="comment" value='comment' type="submit">
+                            </form>
+                            <form action="./like/<%= anythingWeWant[i].id %>/this" method = "post">
+                              <input value='like' type="submit">
                             </form>
                         </div>
     <% }; %>
@@ -65,7 +65,7 @@
   <footer>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
     <div class="navbar">
-      <div class="container"><a href="./home"><img src="../icons/home.png" height="50px" width="50px"/></a><a href="./post"><img src="../icons/add.png" height="50px" width="50px"/></a></div>
+      <div class="container"><a href="./home"><img src="../icons/home.png" height="50px" width="50px"/></a><a href="./post"><img src="../icons/add.png" height="50px" width="50px"/></a><a href="./logout"><img src="../icons/exit2.png" height="50px" width="50px"/></a></div>
     </div>
   </footer>
 </html>
