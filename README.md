@@ -1,4 +1,4 @@
-#Project Title
+#Project Title#
 ePIC is a front and backend app that allows users to upload images and write blogs, that would be stored to a database.
 
 #Getting Started
