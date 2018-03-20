@@ -20,7 +20,7 @@ PUG EJS Passport Bcrypt Sequelize Postgres Express Sharp Multer
 
 
 ## Credits
-David Yim (contributor)
+David Yim (contributor)<br>
 Martin Pham (contributor)
 
 ## Acknowledgments
