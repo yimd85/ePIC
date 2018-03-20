@@ -10,14 +10,20 @@ The app is written in PUG and EJS. You need to NPM install, before you can start
 
 Packages used are multer, passport, sql, sequelize, express, postgres, sharp, and bcrypt. Once you have all the packages you can run npm start, and it should render on local host 3000.
 
-**Deployment**
-
+## Deployment
 You can also sign up at https://glacial-mountain-22075.herokuapp.com/
 
-**Built With**
-
-PUG EJS Passport Bcrypt Sequelize Postgres Express Sharp Multer
-
+## Built With
+* NodeJS
+* PUG 
+* EJS 
+* Passport 
+* Bcrypt 
+* Sequelize 
+* Postgres 
+* Express 
+* Sharp 
+* Multer
 
 ## Credits
 David Yim (contributor)<br>
