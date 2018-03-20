@@ -18,13 +18,18 @@ You can also sign up at https://glacial-mountain-22075.herokuapp.com/
 
 PUG EJS Passport Bcrypt Sequelize Postgres Express Sharp Multer
 
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
-Authors Martin Pham and David Yim
 
-**License**
+## Credits
+David Yim (contributor)
+Martin Pham (contributor)
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
-
-**Acknowledgments**
-
+## Acknowledgments
 Inspiration for the project came from Instagram
+
+## Contribute
+* Contributions are always welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
+
+## License
+[![License (MIT)](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic)](https://opensource.org/licenses/MIT)
+
+* This frontend web application is available under the [MIT License](https://github.com/mhaviv/Marvel-Face-Off/MFO/blob/master/LICENSE.md)
