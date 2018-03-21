@@ -38,7 +38,7 @@ Martin Pham (contributor)
 Inspiration for the project came from Instagram
 
 ## Contribute
-* Contributions are always welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
+* Contributions are always welcome! We have no guidelines.
 
 ## License
 [![License (MIT)](https://img.shields.io/badge/license-MIT-blue.svg?style=plastic)](https://opensource.org/licenses/MIT)
