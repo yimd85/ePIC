@@ -1,17 +1,19 @@
-<img src="icons/profile.png" align="right" width="200" height="170" overflow="hidden" />
+[![GitHub top language](https://img.shields.io/github/languages/top/yimd85/ePic.svg?colorB=EFDF70&style=plastic)](https://github.com/yimd85/ePIC)
+[![GitHub issues](https://img.shields.io/github/issues/yimd85/ePic.svg?&colorB=ff0000&style=plastic)](https://github.com/yimd85/ePIC/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/yimd85/ePic.svg?colorB=1FBF14&style=plastic)](https://github.com/yimd85/ePIC/pulls)
 
+<img src="icons/logo.png" align="right" width="200" height="170" overflow="hidden" />
 
-**Project Title**
-
+## About Project
 ePIC is a front and backend app that allows users to upload images and write blogs, that would be stored to a database.
 
-**Getting Started**
+## Running project locally
+Clone and cd into the repo
+run command npm install
+run command npm start
 
-The app is written in PUG and EJS. You need to NPM install, before you can start the app.
-
-**Prerequisites**
-
-Packages used are multer, passport, sql, sequelize, express, postgres, sharp, and bcrypt. Once you have all the packages you can run npm start, and it should render on local host 3000.
+The terminal will let you know the local port.
+In most cases it will 3000 and it should look like this: "//localhost:3000"
 
 ## Deployment
 You can also sign up at https://glacial-mountain-22075.herokuapp.com/
