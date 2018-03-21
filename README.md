@@ -1,4 +1,4 @@
-[![GitHub top language](https://img.shields.io/github/languages/all/yimd85/ePic.svg?colorB=EFDF70&style=plastic)](https://github.com/yimd85/ePIC)
+[![GitHub top language](https://img.shields.io/github/languages/top/yimd85/ePic.svg?colorB=EFDF70&style=plastic)](https://github.com/yimd85/ePIC)
 [![GitHub issues](https://img.shields.io/github/issues/yimd85/ePic.svg?&colorB=ff0000&style=plastic)](https://github.com/yimd85/ePIC/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/yimd85/ePic.svg?colorB=1FBF14&style=plastic)](https://github.com/yimd85/ePIC/pulls)
 
