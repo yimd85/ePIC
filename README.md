@@ -1,3 +1,6 @@
+<img src="icons/profile.png" align="right" width="200" height="170" overflow="hidden" />
+
+
 **Project Title**
 
 ePIC is a front and backend app that allows users to upload images and write blogs, that would be stored to a database.
@@ -15,14 +18,14 @@ You can also sign up at https://glacial-mountain-22075.herokuapp.com/
 
 ## Built With
 * NodeJS
-* PUG 
-* EJS 
-* Passport 
-* Bcrypt 
-* Sequelize 
-* Postgres 
-* Express 
-* Sharp 
+* PUG
+* EJS
+* Passport
+* Bcrypt
+* Sequelize
+* Postgres
+* Express
+* Sharp
 * Multer
 
 ## Credits
