@@ -11,7 +11,6 @@ ePIC is a front and backend app that allows users to upload images and write blo
 Clone and cd into the repo</br>
 run command npm install</br>
 run command npm start</br>
-
 The terminal will let you know the local port.</br>
 In most cases it will 3000 and it should look like this: "//localhost:3000"
 
